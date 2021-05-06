@@ -10,6 +10,15 @@ namespace ACM.BL
     //each class we define is a type
     public class Customer
     {
+        public Customer()
+        {
+
+        }
+
+        public Customer(int customerId)
+        {
+            CustomerId = customerId;
+        }
         public int CustomerId { get; private set; }
         public string EmailAddress { get; set; }
 
@@ -62,6 +71,40 @@ namespace ACM.BL
             }
         }
         public static int InstanceCount { get; set; }
+
+        //Validates the customer data
+        //method is public so another code in the app can call it 
+        //bool - true or false value
+        public bool Validate()
+        {
+            //vaildate the properties of the value
+            var isVaild = true;
+            //check that the lastName and EmailAddress are not empty or white space
+                if (string.IsNullOrWhiteSpace(LastName)) isVaild = false;
+                if (string.IsNullOrWhiteSpace(EmailAddress)) isVaild = false;
+            return isVaild;
+        }
+
+        //Retrieve One Customer
+        public Customer Retrieve(int customerId)
+        {
+            //code that retrieves the defind customer
+            return new Customer();
+        }
+
+        //Retrieve all Customers
+        public List<Customer> Retrieve()
+        {
+            //code that retrieves all the customers
+            return new List<Customer>();
+        }
+
+        //Saves the current Customer
+        public bool Save()
+        {
+            //code that saves the defined customer
+            return true;
+        }
     }
 }
 
