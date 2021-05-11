@@ -10,7 +10,7 @@ namespace ACM.BL
     //each class we define is a type
     public class Customer
     {
-        public Customer()
+        public Customer(): this(0)
         {
 
         }
@@ -18,8 +18,12 @@ namespace ACM.BL
         public Customer(int customerId)
         {
             CustomerId = customerId;
+            AddressList = new List<Address>();
         }
+
+        public List<Address> AddressList { get; set; }
         public int CustomerId { get; private set; }
+        public int CustomerType { get; set; }
         public string EmailAddress { get; set; }
 
         //auto-implemented property. Behide the sense the code is still creating a backing field
