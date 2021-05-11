@@ -80,31 +80,11 @@ namespace ACM.BL
             //vaildate the properties of the value
             var isVaild = true;
             //check that the lastName and EmailAddress are not empty or white space
-                if (string.IsNullOrWhiteSpace(LastName)) isVaild = false;
-                if (string.IsNullOrWhiteSpace(EmailAddress)) isVaild = false;
+            if (string.IsNullOrWhiteSpace(LastName)) isVaild = false;
+            if (string.IsNullOrWhiteSpace(EmailAddress)) isVaild = false;
             return isVaild;
         }
 
-        //Retrieve One Customer
-        public Customer Retrieve(int customerId)
-        {
-            //code that retrieves the defind customer
-            return new Customer();
-        }
-
-        //Retrieve all Customers
-        public List<Customer> Retrieve()
-        {
-            //code that retrieves all the customers
-            return new List<Customer>();
-        }
-
-        //Saves the current Customer
-        public bool Save()
-        {
-            //code that saves the defined customer
-            return true;
-        }
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    class Product
+    public class Product
     {
         public Product()
         {
@@ -23,19 +23,7 @@ namespace ACM.BL
         //The question mark denotes a nullable type. A nullable type is a vlaue type such an as integer or a decimal that allow definiton of that value or a null
         public decimal? CurrentPrice { get; set; }
 
-        //Retrieve one product
-        public Product Retrieve(int productId) 
-        {
-            //code that retrieves the defined product
-            return new Product();
-        }
-
-        //Save the current product
-        public bool Save()
-        {
-            //code that saves the defined product 
-            return true;
-        }
+      
 
         //Validates the product data
         public bool Validate()
