@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    public class Address
+    public class Address : EntityBase
     {
         public Address()
         {
@@ -27,7 +27,7 @@ namespace ACM.BL
         public string StreetLine2 { get; set; }
 
         //Validates the address data
-        public bool Validate()
+        public override bool Validate()
         {
             var isValid = true;
 

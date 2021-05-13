@@ -8,7 +8,7 @@ namespace ACM.BL
 {
     //public mean this class is callable from another part of the app
     //each class we define is a type
-    public class Customer
+    public class Customer : EntityBase
     {
         public Customer(): this(0)
         {
@@ -76,10 +76,12 @@ namespace ACM.BL
         }
         public static int InstanceCount { get; set; }
 
+        public override string ToString() => FullName;
+
         //Validates the customer data
         //method is public so another code in the app can call it 
         //bool - true or false value
-        public bool Validate()
+        public override bool Validate()
         {
             //vaildate the properties of the value
             var isVaild = true;

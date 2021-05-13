@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-   public class CustomerRepository
+    public class CustomerRepository 
     {
 
         //this establishes a collaborative relationship between the CustomerRepository and the AddressRepository
         public CustomerRepository()
-            {
+        {
 
             //creating an instance of the address repository in the constructor
             addressRepository = new AddressRepository();
         }
         private AddressRepository addressRepository { get; set; }
-public Customer Retrieve(int customerId)
+        public Customer Retrieve(int customerId)
         {
             //create the instance of the Customer class
             //Pass in the requested id
@@ -26,21 +26,42 @@ public Customer Retrieve(int customerId)
             //Code that retreves the defined customer
 
             //Temporary hard-coded values to return a popluated customer
-            if(customerId == 1)
+            if (customerId == 1)
             {
                 customer.EmailAddress = "fbaggins@hobbiton.me";
                 customer.FirstName = "Frodo";
                 customer.LastName = "Baggins";
                 //calling the RetrieveByCustomerId method and populate the address list. Call the ToList to return the result as a list
                 customer.AddressList = addressRepository.RetrieveByCustomerId(customerId).ToList();
-            return customer;
-        }
+                return customer;
+            }
 
-        //Saves the current customer
-        public bool Save( Customer customer)
-        {
-            //code that saves the passed in customer
-            return true;
+
+            //Saves the current order
+            public bool Save(Customer customer)
+            {
+                var success = true;
+                if (customer.HasChanges)
+                {
+                    if (customer.IsValid)
+                    {
+                        if (customer.IsNew)
+                        {
+                            //Call an Insert Stored Procedure
+                        }
+                        else
+                        {
+                            //Call an Update Store Produre
+                        }
+                    }
+                    else
+                    {
+                        success = false;
+                    }
+                }
+                return success;
+
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acme.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ACM.BL
 {
-    public class Product
+    public class Product : EntityBase
     {
         public Product()
         {
@@ -17,16 +18,34 @@ namespace ACM.BL
         {
             ProductId = productId;
         }
-        public int ProductId { get; private set; }
-        public string ProductName { get; set; }
-        public string ProductDescription{ get; set; }
+
+
         //The question mark denotes a nullable type. A nullable type is a vlaue type such an as integer or a decimal that allow definiton of that value or a null
         public decimal? CurrentPrice { get; set; }
+        public string ProductDescription { get; set; }
+        public int ProductId { get; private set; }
 
-      
+        private string _productName;
+      public string ProductName
+        {
+            get
+            {
+
+                return _productName.InsertSpaces();
+            }
+            set
+            {
+                _productName = value;
+            }
+        }
+   
+
+  
+
+        public override string ToString() => ProductName;
 
         //Validates the product data
-        public bool Validate()
+        public override bool Validate()
         {
 
             //vaildate the properties of the value

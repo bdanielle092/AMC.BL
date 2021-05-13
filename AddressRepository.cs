@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ACM.BL
-{ 
+{
     public class AddressRepository
     {
         //Retrivee one address
@@ -16,7 +16,7 @@ namespace ACM.BL
             //code that retrieves the defined address
 
             //Temporary hard coded values to return a popluated address
-            if(addressId == 1)
+            if (addressId == 1)
             {
                 address.AddressType = 1;
                 address.StreetLine1 = "Bag End";
@@ -63,8 +63,26 @@ namespace ACM.BL
         //Save the current address
         public bool Save(Address address)
         {
-            //code that saves the passed in address
-            return true;
+            var success = true;
+            if (address.HasChanges)
+            {
+                if (address.IsValid)
+                {
+                    if (address.IsNew)
+                    {
+                        //Call an Insert Stored Procedure
+                    }
+                    else
+                    {
+                        //Call an Update Store Produre
+                    }
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            return success;
         }
     }
 }
