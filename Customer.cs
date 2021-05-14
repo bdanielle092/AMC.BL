@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acme.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ACM.BL
 {
     //public mean this class is callable from another part of the app
     //each class we define is a type
-    public class Customer : EntityBase
+    public class Customer : EntityBase, ILoggable
     {
         public Customer(): this(0)
         {
@@ -76,6 +77,9 @@ namespace ACM.BL
         }
         public static int InstanceCount { get; set; }
 
+        //this syntax leverages the expression bodied method feature that uses a lambda operator to reduce the code foe a one-line method
+        public string Log() =>
+            $"{CustomerId}: {FullName} Email: {EmailAddress} Status: {EntityState.ToString()}";
         public override string ToString() => FullName;
 
         //Validates the customer data
